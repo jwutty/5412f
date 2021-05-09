@@ -80,7 +80,7 @@ class NN(nn.Module):
 
 @app.route('/')
 def index():
-    return "Cow Mastitis Predictor"
+    return "Cow Mastitis Predictor!"
 
 
 @app.route('/api/cow/predict/', methods=['GET'])
