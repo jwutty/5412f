@@ -1,0 +1,4 @@
+numpy
+pytorch
+flask
+azure-cosmos
