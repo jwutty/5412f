@@ -95,6 +95,11 @@ def predict():
     #     return "input error"
 
 
+@app.route('/api/c/', methods=['GET'])
+def maps():
+    return 2*2
+
+
 @app.route('/api/cow/<id>', methods=['POST'])
 def addCowDay(cid):
     row = request.json.get("id")
