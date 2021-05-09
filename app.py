@@ -48,6 +48,11 @@ app = Flask(__name__)
 # finally:
 #     print("\nConnected")
 
+filename = 'model1'
+model = NN()
+model.load_state_dict(torch.load('rua'), strict=False)
+model.eval()
+
 
 class NN(nn.Module):
     def __init__(self):
@@ -78,14 +83,9 @@ def index():
     return "Cow Mastitis Predictor"
 
 
-filename = 'model1'
 @app.route('/api/cow/predict/', methods=['GET'])
 def predict():
     x = request.json
-    model = NN()
-    model.load_state_dict(torch.load('rua'), strict=False)
-    model.eval()
-    print(x)
     y = model(torch.tensor([x]))
     pred = torch.round(torch.sigmoid(y.float()))
     result = "mastitis" if pred == 1 else 'healthy'
